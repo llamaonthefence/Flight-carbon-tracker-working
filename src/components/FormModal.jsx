@@ -5,6 +5,7 @@ import countries from "../data/countrynames";
 import fetchCities from "../data/fetchCities";
 import fetchAirports from "../data/fetchAirports";
 import { calculateCarbonEstimate } from "../data/carbon-api";
+import submitToAirtable from "../data/submitToAirtable";
 
 
 const FormModal = ({ isOpen, onClose, onSubmit }) => {
@@ -50,7 +51,14 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
 // Departure country state change
 
     const handleDepartureCountryChange = (e) => {
-            setSelectedDepartureCountry(e.target.value);
+        const value = e.target.value
+            setSelectedDepartureCountry(value);
+            setFormData((prevFormData) => ({
+                ...prevFormData,
+                departureCountry: value,
+                departureCity: '',
+                departureAirport: '', 
+            }))
     };
 
 //.......................................................................
@@ -202,8 +210,14 @@ const handleDestinationCityChange = async (e) => {
                 formData.destinationAirport
             );
             console.log('Carbon estimate', carbonKg);
-            const updatedFormData = {...formData, carbonKg: carbonKg};
+            const updatedFormData = {...formData, 
+                carbonKg: carbonKg,
+                departureCountry: selectedDepartureCountry,
+                departureCity: selectedDepartureCity,
+            };
             setFormData(updatedFormData); 
+
+            await submitToAirtable(updatedFormData);
             onSubmit(updatedFormData); 
         } catch (error) {
             console.error('Error fetching carbon estimate', error);  

@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ChakraProvider, Button, Flex, Box } from "@chakra-ui/react";
 import FormModal from "./components/FormModal";
@@ -26,10 +26,19 @@ function App() {
 
   return (
     <ChakraProvider>
-       <Flex direction="column" align="center" justify="center"> 
-        <Button onClick={openModal}>Add Flight Entry</Button>
+       <Flex direction="column" align="center" justify="center" minHeight="100vh"> 
+        <Button colorScheme='teal' onClick={openModal}>Add Flight Entry</Button>
         
-        <Box mt="4">
+        <Box 
+        mt="4"
+        width="100%"
+        maxWidth="1280px"
+        flex="1"
+        overflowY="auto"
+        p={4}
+        border="1px solid #ccc"
+        borderRadius="md"
+        >
           {flightEntries.map((entry, index) => (
             <FlightEntry key={index} entry={entry}/>
           ))}
