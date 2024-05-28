@@ -4,9 +4,10 @@ import axios from "axios";
 import countries from "../data/countrynames";
 import fetchCities from "../data/fetchCities";
 import fetchAirports from "../data/fetchAirports";
+import { calculateCarbonEstimate } from "../data/carbon-api";
 
 
-const FormModal = ({ isOpen, onClose }) => {
+const FormModal = ({ isOpen, onClose, onSubmit }) => {
 
     // State variables for form data & selected values: 
     const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const FormModal = ({ isOpen, onClose }) => {
       destinationCountry: '',
       destinationCity: '',
       destinationAirport: '',
+      carbonKg: 0,
     });
 
     const [selectedDepartureCountry, setSelectedDepartureCountry] = useState('');
@@ -186,12 +188,26 @@ const handleDestinationCityChange = async (e) => {
     }
 }
 
+
 //.......................................................................
 // Handle submit 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // prevents whole page from reloading
         console.log("Form submitted:", formData);
+
+        try {
+            const carbonKg = await calculateCarbonEstimate(    // Error here 
+                formData.departureAirport, 
+                formData.destinationAirport
+            );
+            console.log('Carbon estimate', carbonKg);
+            const updatedFormData = {...formData, carbonKg: carbonKg};
+            setFormData(updatedFormData); 
+            onSubmit(updatedFormData); 
+        } catch (error) {
+            console.error('Error fetching carbon estimate', error);  
+        }
 
         onClose(); // Close the modal after submission
       };
@@ -237,7 +253,7 @@ const handleDestinationCityChange = async (e) => {
                 <FormLabel>Departure Airport</FormLabel>
                 <Select name="departureAirport" value={formData.departureAirports} onChange={handleChange}>
                      {departureAirports.map((airport, index) => (
-                     <option key={index} value={airport.name}>
+                     <option key={index} value={airport.iata}>
                       {airport.name}({airport.iata})
                     </option>
                     ))}
