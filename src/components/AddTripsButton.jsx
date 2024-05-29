@@ -19,6 +19,11 @@ const AddTripsButton = ({ onAddFlight }) => {
     closeModal();
   };
 
+//     const handleFormSubmit = (formData) => {
+//     setFlightEntries([...flightEntries, formData]);
+//     closeModal(); //FormModal closes after submission 
+//   }
+
   return (
     <>
       <Button colorScheme='teal' onClick={openModal}>Add Flight Entry</Button>

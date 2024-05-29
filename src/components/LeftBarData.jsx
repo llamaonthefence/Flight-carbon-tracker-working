@@ -7,19 +7,22 @@ export const LeftBarData = [
     {
         title: "Home",
         icon: <HomeOutlinedIcon />,
-        link: "/home"
+        link: "/home",
+        cName: "nav-text"
     },
 
     {
         title: "Trips",
         icon: <ConnectingAirportsOutlinedIcon />,
-        link: "/trips"
+        link: "/trips",
+        cName: "nav-text"
     },
 
     {
         title: "Calculator",
         icon: <CalculateOutlinedIcon />,
-        link: "/calculator"
+        link: "/calculator",
+        cName: "nav-text"
     },
 
 ]

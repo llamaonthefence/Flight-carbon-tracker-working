@@ -1,51 +1,53 @@
 // import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { ChakraProvider, Button, Flex, Box } from "@chakra-ui/react";
-import FormModal from "./components/FormModal";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ChakraProvider, Flex, Box } from "@chakra-ui/react";
+// import FormModal from "./components/FormModal";
 import { useState } from "react";
-import FlightEntry from "./components/FlightEntry";
+// import FlightEntry from "./components/FlightEntry";
+// import AddTripsButton from "./components/AddTripsButton";
+// import FlightEntriesList from "./components/FlightEntriesList";
+import LeftBar from "./components/LeftBar";
+import Trips from "./Pages/Trips";
+import Home from "./Pages/Home";
+import Calculator from "./Pages/Calculator";
+import { FlightEntriesProvider } from "./contexts/FlightEntriesContext";
+
 
 function App() {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [flightEntries, setFlightEntries] = useState([]);
+  // const [flightEntries, setFlightEntries] = useState([]);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  // const openModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
-  const handleFormSubmit = (formData) => {
-    setFlightEntries([...flightEntries, formData]);
-    closeModal(); //FormModal closes after submission 
-  }
-
+  //  const handleAddFlight = (formData) => {
+  //    setFlightEntries([...flightEntries, formData]);
+  // //   closeModal(); //FormModal closes after submission 
+  //  }
+  
 
   return (
     <ChakraProvider>
+      <Flex>
+      <LeftBar /> 
+      <Box ml="0px" flex="1">
        <Flex direction="column" align="center" justify="center" minHeight="100vh"> 
-        <Button colorScheme='teal' onClick={openModal}>Add Flight Entry</Button>
-        
-        <Box 
-        mt="4"
-        width="100%"
-        maxWidth="1280px"
-        flex="1"
-        overflowY="auto"
-        p={4}
-        border="1px solid #ccc"
-        borderRadius="md"
-        >
-          {flightEntries.map((entry, index) => (
-            <FlightEntry key={index} entry={entry}/>
-          ))}
-        </Box>
-
+        {/* <AddTripsButton onAddFlight={handleAddFlight} /> 
+        <FlightEntriesList flightEntries={flightEntries} />  */}
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/trips" element={<FlightEntriesProvider><Trips /></FlightEntriesProvider>}/>
+          <Route path="/calculator" element={<Calculator />}/>
+        </Routes>
       </Flex>
-      <FormModal isOpen={isModalOpen} onClose={closeModal} onSubmit={handleFormSubmit}/>
+      </Box>
+      {/* <FormModal isOpen={isModalOpen} onClose={closeModal} onSubmit={handleFormSubmit}/> */}
+      </Flex>
     </ChakraProvider>
   );
 }

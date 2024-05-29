@@ -1,0 +1,84 @@
+.navBar {
+    height: 80px; 
+    background-color: rgb(27, 27, 28);
+    display: flex; 
+    justify-content: start;
+    align-items: center;
+  } 
+
+.menu-bars {
+  margin-left: 2 rem;
+  font-size: 2 rem;
+  background: none;
+}
+
+ /* .nav-menu {
+  background-color: rgb(27, 27, 28);
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0; 
+  left: -100%; 
+  transition: 350ms;
+} */ */
+
+.nav-menu.active {
+  left: 0; 
+  transition: 850ms
+} */
+
+
+ .nav-menu-items {
+  margin-top: 60px;
+  /* display: flex;  */
+  /* justify-content: start; */
+  /* align-items: center; */
+  padding: 8px 0px 8px 16px; 
+  list-style: none;
+  height: 20px;
+ }
+
+
+ /* .leftBarList {
+    height: auto; 
+    width: 100%;
+    padding: 0;
+    margin-top: 80%;
+  }
+  
+  .leftBarList .navrow {
+    width: 100%;
+    height: 60px; 
+    border: 1px solid black;
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  .leftBarList .navrow:hover {
+    cursor: pointer;
+    background-color: rgb(7, 7, 7);
+  }
+  
+  .leftBarList #active {
+    background-color: rgb(7, 7, 7);
+  }
+  
+  .navrow #navicon {
+    flex: 30%;
+    display: grid; 
+    place-items: center;
+  }
+  
+  .navrow #navtitle {
+    flex: 70%;
+  } */
+
+   */
