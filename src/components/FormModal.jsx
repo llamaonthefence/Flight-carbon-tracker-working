@@ -20,7 +20,7 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
       destinationCountry: '',
       destinationCity: '',
       destinationAirport: '',
-      carbonKg: 0,
+      estimatedEmission: 0,
     });
 
     const [selectedDepartureCountry, setSelectedDepartureCountry] = useState('');
@@ -34,6 +34,21 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
 
     const [departureAirports, setDepartureAirports] = useState([]);
     const [destinationAirports, setDestinationAirports] = useState([]);
+
+
+    const [isDisabled, setIsDisabled] = useState(true);
+
+//.......................................................................
+// Disable submit button before all fields are filled 
+
+useEffect(() => {
+    const { entryTitle, departureCountry, departureCity, departureAirport, destinationCountry, destinationCity, destinationAirport } = formData;
+    if (entryTitle && departureCountry && departureCity && departureAirport && destinationCountry && destinationCity && destinationAirport) {
+        setIsDisabled(false);
+    } else {
+        setIsDisabled(true);
+    }
+}, [formData]);
 
 //.......................................................................
 // Fetch cities when departure country is selected
@@ -205,25 +220,24 @@ const handleDestinationCityChange = async (e) => {
         console.log("Form submitted:", formData);
 
         try {
-            const carbonKg = await calculateCarbonEstimate(    // Error here 
+            const estimatedEmission = await calculateCarbonEstimate(    // Error here 
                 formData.departureAirport, 
                 formData.destinationAirport
             );
-            console.log('Carbon estimate', carbonKg);
+            console.log('Carbon estimate', estimatedEmission);
             const updatedFormData = {...formData, 
-                carbonKg: carbonKg,
+                estimatedEmission: estimatedEmission,
                 departureCountry: selectedDepartureCountry,
                 departureCity: selectedDepartureCity,
             };
-            setFormData(updatedFormData); 
+            // setFormData(updatedFormData); 
 
-            await submitToAirtable(updatedFormData);
-            onSubmit(updatedFormData); 
+            const newEntry = await submitToAirtable(updatedFormData);
+            onSubmit(newEntry); 
+            onClose();   // Close the modal after submission
         } catch (error) {
             console.error('Error fetching carbon estimate', error);  
         }
-
-        onClose(); // Close the modal after submission
       };
 
 
@@ -312,7 +326,7 @@ const handleDestinationCityChange = async (e) => {
             </ModalBody>
             <ModalFooter>
               <Flex justify="space-between" w="100%">
-                <Button colorScheme="blue" onClick={handleSubmit}>Calculate Emissions</Button>
+                <Button colorScheme="blue" disabled={isDisabled} onClick={handleSubmit}>Calculate Emissions</Button>
                 <Button variant="ghost" onClick={onClose}>Cancel</Button>
               </Flex>
             </ModalFooter>

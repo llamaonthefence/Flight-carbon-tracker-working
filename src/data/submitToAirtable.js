@@ -14,7 +14,8 @@ const submitToAirtable = async (updatedFormData) => {
     //         "fldaclWfBv2ybn7qz": formData.destinationCountry,
     //         "fldVmKFu1iQAa0QaX": formData.destinationCity,
     //         "fldfUsidfBpumDXHg": formData.destinationAirport,
-    //         "fldngfkjAutGwnCWq": formData.carbonKg
+    //         "fldngfkjAutGwnCWq": formData.estimatedEmission
+    
     //     }
     // }
 
@@ -37,7 +38,7 @@ const submitToAirtable = async (updatedFormData) => {
             "destinationCountry": updatedFormData.destinationCountry,
             "destinationCity": updatedFormData.destinationCity,
             "destinationAirport": updatedFormData.destinationAirport,
-            "estimatedEmission": updatedFormData.carbonKg,
+            "estimatedEmission": updatedFormData.estimatedEmission,
         }
     };
 
@@ -57,7 +58,15 @@ const submitToAirtable = async (updatedFormData) => {
 
         const jsonData = await response.json();
         console.log('Airtable response:', jsonData);
-        return jsonData;
+
+
+        return {
+            id: jsonData.id,
+            createdTime: jsonData.createdTime,
+            ...jsonData.fields
+        };
+
+
     } catch (error) {
         console.error('Error submitting to Airtable:', error);
         throw error;

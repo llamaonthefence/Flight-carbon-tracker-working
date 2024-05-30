@@ -29,16 +29,16 @@ export const calculateCarbonEstimate = async (departureAirport, destinationAirpo
         console.log("Carbon estimate response:", response.data);
 
     if (response && response.data && response.data.data && response.data.data.attributes && response.data.data.attributes.carbon_kg) {
-        const carbonKg = response.data.data.attributes.carbon_kg; // Error here 
-        console.log("Carbon kg:", carbonKg);
-        return carbonKg;
+        const estimatedEmission = response.data.data.attributes.carbon_kg; // Error here 
+        console.log("Carbon kg:", estimatedEmission);
+        return estimatedEmission;
     } else {
         throw new Error('Unexpected response structure or missing data');
     }
 
         // if (response && response.data && response.data.attributes && response.data.attributes.carbon_kg) {
-        //     const carbonKg = response.data.attributes.carbon_kg;
-        //     return carbonKg; // Return the carbon estimate
+        //     const estimatedEmission = response.data.attributes.carbon_kg;
+        //     return estimatedEmission; // Return the carbon estimate
         // } else {
         //     throw new Error('Unexpected response structure or missing data');
         // }
