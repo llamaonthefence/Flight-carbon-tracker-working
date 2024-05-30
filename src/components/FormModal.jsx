@@ -41,14 +41,14 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
 //.......................................................................
 // Disable submit button before all fields are filled 
 
-useEffect(() => {
-    const { entryTitle, departureCountry, departureCity, departureAirport, destinationCountry, destinationCity, destinationAirport } = formData;
-    if (entryTitle && departureCountry && departureCity && departureAirport && destinationCountry && destinationCity && destinationAirport) {
-        setIsDisabled(false);
-    } else {
-        setIsDisabled(true);
-    }
-}, [formData]);
+// useEffect(() => {
+//     const { entryTitle, departureCountry, departureCity, departureAirport, destinationCountry, destinationCity, destinationAirport } = formData;
+//     if (entryTitle && departureCountry && departureCity && departureAirport && destinationCountry && destinationCity && destinationAirport) {
+//         setIsDisabled(false);
+//     } else {
+//         setIsDisabled(true);
+//     }
+// }, [formData]);
 
 //.......................................................................
 // Fetch cities when departure country is selected
