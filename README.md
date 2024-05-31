@@ -13,12 +13,14 @@ This is a form where users can select their origin and destination based on seve
 ![Fetch input fields integrated from various APIs](src/assets/for_readme/03-Flight-form.png)
 
 ***
+
 ##Technologies Used
 * Javascript
 * JSON 
 * React JS 
 
 ***
+
 ##Process
 #### UI Sketch (Figma)
 <img src="src/assets/for_readme/01-Process.png">
@@ -27,7 +29,8 @@ This is a form where users can select their origin and destination based on seve
 <img src="src/assets/for_readme/02-Process.png">
 
 ***
-####Favourites
+
+##Favourites
 Trying Regex to manipulate data from API to pass into another API
 ```
 const iso2Code = selectedDepartureCountry.match(/\((.*?)\)/)[1];
@@ -77,9 +80,11 @@ Appreciate the power of useEffect
         fetchData();
     }, [isOpen, entryId]);
 ```
+
 ##Challenges Face 
 1. Project folder is large and increasingly confusing - how to structure project components
 2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
+
 ```
         useEffect(() => {
     const fetchInitialData = async () => {
@@ -194,11 +199,14 @@ Makes or breaks the request
         "fields": {...
 ```
 ***
+
 ##Next Steps
 1. Many steps
 2. Fix the problems newly created 
 3. Make CRUD functional
+   
 ***
+
 ##Attributions
 * Waihon - for all the advice, hours spent on refreshing concepts and troubleshooting
 * [ChakraUI](https://v2.chakra-ui.com/getting-started) 
