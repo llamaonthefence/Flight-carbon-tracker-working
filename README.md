@@ -77,9 +77,9 @@ Appreciate the power of useEffect
         fetchData();
     }, [isOpen, entryId]);
 ```
-    ##Challenges Face 
-    1. Project folder is large and increasingly confusing - how to structure project components
-    2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
+##Challenges Face 
+1. Project folder is large and increasingly confusing - how to structure project components
+2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
 ```
         useEffect(() => {
     const fetchInitialData = async () => {
@@ -114,7 +114,7 @@ Appreciate the power of useEffect
         console.log('Updated form data', updatedFormData)
     }
 ```
-    3. Using more than one APIs in consecutive manner
+3. Using more than one APIs in consecutive manner
 ```
     // Fetch cities when departure country is selected
 
