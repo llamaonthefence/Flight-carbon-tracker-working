@@ -36,7 +36,7 @@ const FormModal = ({ isOpen, onClose, onSubmit }) => {
     const [destinationAirports, setDestinationAirports] = useState([]);
 
 
-    const [isDisabled, setIsDisabled] = useState(true);
+    // const [isDisabled, setIsDisabled] = useState(true);
 
 //.......................................................................
 // Disable submit button before all fields are filled 
@@ -326,7 +326,7 @@ const handleDestinationCityChange = async (e) => {
             </ModalBody>
             <ModalFooter>
               <Flex justify="space-between" w="100%">
-                <Button colorScheme="blue" disabled={isDisabled} onClick={handleSubmit}>Calculate Emissions</Button>
+                <Button colorScheme="blue" onClick={handleSubmit}>Calculate Emissions</Button>
                 <Button variant="ghost" onClick={onClose}>Cancel</Button>
               </Flex>
             </ModalFooter>

@@ -15,7 +15,6 @@ const AIRTABLE_API_KEY = 'Bearer patKp6Qd6LtmGS3Ns.49fa6eec9fcfe10f5cde2762e424e
                   destinationAirport: updatedFormData.destinationAirport
               }
           }
-    
 
   try {
     const response = await fetch(`${AIRTABLE_API_URL}/${entryId}`, {

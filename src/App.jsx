@@ -12,6 +12,7 @@ import Home from "./Pages/Home";
 import Calculator from "./Pages/Calculator";
 import { FlightEntriesProvider } from "./contexts/FlightEntriesContext";
 import Trips from "./Pages/Trips";
+import FavouriteAirlines from "./Pages/FavouriteAirlines";
 
 
  function App() {
@@ -82,6 +83,7 @@ import Trips from "./Pages/Trips";
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/trips" element={<FlightEntriesProvider><Trips /></FlightEntriesProvider>}/>
+          <Route path="/favourite-airlines" element={<FavouriteAirlines />}/>
           <Route path="/calculator" element={<Calculator />}/>
         </Routes>
       </Flex>

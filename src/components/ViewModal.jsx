@@ -3,98 +3,6 @@ import { fetchAirtableEntry } from "../data/fetchAirtableEntry";
 import { Text, Modal, Box, Button, Heading, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 
 
-//State variables for each field 
-// const ViewModal = ({isOpen, onClose, entryId}) => {
-
-//     const [entryTitle, setEntryTitle] = useState("");
-//     const [createdTime, setCreatedTime] = useState(""); 
-//     const [departureCountry, setDepartureCountry] = useState(""); 
-//     const [departureCity, setDepartureCity] = useState(""); 
-//     const [departureAirport, setDepartureAirport] = useState(""); 
-//     const [destinationCountry, setDestinationCountry] = useState(""); 
-//     const [destinationCity, setDestinationCity] = useState("");
-//     const [destinationAirport, setDestinationAirport] = useState(""); 
-//     const [estimatedEmission, setEstimatedEmission] = useState(""); 
-
-//     const handleView = async () => {
-//         try {
-//             const entryData = await fetchAirtableEntry(entryId); 
-//             console.log('View entry', entryData);
-//             console.log(entryId) 
-//         } catch (error) {
-//             console.error('Error viewing entry', error)
-//         }
-//     };
-
-//         useEffect(()=> {
-//             if (isOpen && entryId) {
-//                 fetchAirtableEntry()
-//                 .then ((entry) => {
-//                     const {fields, createdTime} = entry  // destructure GET response
-                    
-//                     setEntryTitle(fields.entryTitle || "")  // see response below. Or default
-//                     setDepartureCountry(fields.departureCountry || "") 
-//                     setDepartureCity(fields.departureCity || "") 
-//                     setDepartureAirport(fields.departureAirport || "")
-//                     setDestinationCountry(fields.destinationCountry || "")
-//                     setDestinationCity(fields.destinationCity || "")
-//                     setDestinationAirport(fields.destinationAirport || "")
-//                     setCreatedTime(createdTime || "")  // top-level response
-//                     setEstimatedEmission(fields.estimatedEmission || "")
-//                 }) 
-//                 .catch((error) => {
-//                     console.log("Error fetching entry from Airtable", error); 
-//                 })
-//             }
-//         }, [isOpen, entryId]);
-
-        
-//         if (!isOpen) return null; // to avoid unnecessary re-renders & API calls when modal is !open. 
-
-//.......................................................................
-
-// const ViewModal = ({ isOpen, onClose, entryId }) => {
-//     const [entryTitle, setEntryTitle] = useState("");
-//     const [createdTime, setCreatedTime] = useState(""); 
-//     const [departureCountry, setDepartureCountry] = useState(""); 
-//     const [departureCity, setDepartureCity] = useState(""); 
-//     const [departureAirport, setDepartureAirport] = useState(""); 
-//     const [destinationCountry, setDestinationCountry] = useState(""); 
-//     const [destinationCity, setDestinationCity] = useState("");
-//     const [destinationAirport, setDestinationAirport] = useState(""); 
-//     const [estimatedEmission, setEstimatedEmission] = useState(""); 
-
-//     const handleView = async () => {
-//         try {
-//             const entryData = await fetchAirtableEntry(entryId); 
-//             const { fields, createdTime } = entryData;
-
-//             setEntryTitle(fields.entryTitle || "");
-//             setDepartureCountry(fields.departureCountry || "");
-//             setDepartureCity(fields.departureCity || "");
-//             setDepartureAirport(fields.departureAirport || "");
-//             setDestinationCountry(fields.destinationCountry || "");
-//             setDestinationCity(fields.destinationCity || "");
-//             setDestinationAirport(fields.destinationAirport || "");
-//             setCreatedTime(createdTime || "");
-//             setEstimatedEmission(fields.estimatedEmission || "");
-
-//             console.log('View entry', entryData);
-//             console.log(id);
-//         } catch (error) {
-//             console.error('Error viewing entry', error);
-//         }
-//     };
-
-//     useEffect(() => {
-//         if (isOpen && entryId) {
-//             handleView();
-//         }
-//     }, [isOpen, entryId]);
-
-//     if (!isOpen) return null;
-
-
 const ViewModal = ({ isOpen, onClose, entryId }) => {
     const [entryTitle, setEntryTitle] = useState("");
     const [createdTime, setCreatedTime] = useState("");
@@ -106,6 +14,10 @@ const ViewModal = ({ isOpen, onClose, entryId }) => {
     const [destinationAirport, setDestinationAirport] = useState("");
     const [estimatedEmission, setEstimatedEmission] = useState("");
 
+
+    // to update single state variable of each field separately 
+    // 2/9 fields are dynamically generated
+    
     useEffect(() => {
         const fetchData = async () => {
             try {

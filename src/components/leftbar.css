@@ -83,6 +83,10 @@ span {
   padding: 10px;
 }
 
+#close-icon {
+  margin-left: 2rem;
+}
+
  /* .nav-menu-items {
   margin-top: 60px;
   /* display: flex;  */

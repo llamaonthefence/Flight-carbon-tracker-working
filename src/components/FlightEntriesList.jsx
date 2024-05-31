@@ -36,6 +36,9 @@ const FlightEntriesList = ({ flightEntries }) => {
     // const [entries, setEntries] = useState(flightEntries);
     const [entries, setEntries] = useState([]);
 
+    // useEffect(() => {const sortEntries = flightEntries.sort((a,b) => new Date(b.createdTime) - new Date(a.createdTime))
+    //     setEntries(sortEntries)
+    // }, [flightEntries])
 
     const handleSubmit = (newEntry) => {
         // Add new flight entry to the existing list of flight entries

@@ -25,4 +25,11 @@ export const LeftBarData = [
         cName: "nav-text"
     },
 
+    {
+        title: "Favourite Airlines",
+        icon: <CalculateOutlinedIcon />,
+        path: "/favourite-airlines",
+        cName: "nav-text"
+    },
+
 ]

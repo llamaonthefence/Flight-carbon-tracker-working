@@ -7,6 +7,8 @@ import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined
 import { editAirtableEntry } from "../data/editAirtableEntry";
 import { deleteAirtableEntry } from "../data/deleteAirtableEntry";
 import ViewModal from "./ViewModal";
+// import UpdateModal from "./UpdateModal";
+import { useState } from "react";
 
 
 
@@ -35,25 +37,32 @@ function FlightEntry({ entry, onDelete }) {
     //     }
     // };
 
-    const handleEdit = async () => {
-        try {
-            const updatedFormData = {
-                entryTitle: 'New Title', 
-                departureCountry,
-                departureCity,
-                departureAirport,
-                destinationCountry,
-                destinationCity,
-                destinationAirport,
-                estimatedEmission,
-            };
+    // const handleEdit = async () => {
+    //     try {
+    //         const updatedFormData = {
+    //             entryTitle: 'New Title', 
+    //             departureCountry,
+    //             departureCity,
+    //             departureAirport,
+    //             destinationCountry,
+    //             destinationCity,
+    //             destinationAirport,
+    //             estimatedEmission,
+    //         };
 
-            const updatedEntry = await editAirtableEntry(id, updatedFormData); 
-            console.log('Edited entry', updatedEntry);
-        } catch (error) {
-            console.error('Error editing entry', error)
-        }
-    }; 
+    //         const updatedEntry = await editAirtableEntry(id, updatedFormData); 
+    //         console.log('Edited entry', updatedEntry);
+    //     } catch (error) {
+    //         console.error('Error editing entry', error)
+    //     }
+    // }; 
+
+
+    // Edit/update
+    const [isEditOpen, setIsEditOpen] = useState(false); 
+    const onEditOpen = () => setIsEditOpen(true); 
+    const onEditClose = () => setIsEditOpen(false); 
+
 
     const handleDelete = async () => {
         try {
@@ -84,7 +93,8 @@ function FlightEntry({ entry, onDelete }) {
             <Spacer />
             <Button onClick={onOpen} rightIcon={<RemoveRedEyeOutlinedIcon />} borderRadius="full" colorScheme="teal" iconSpacing="0"/>
             <ViewModal isOpen={isOpen} onClose={onClose} entryId={id}/> 
-            <Button onClick={handleEdit} rightIcon={<EditOutlinedIcon />} borderRadius="full"colorScheme="teal" iconSpacing="0"/>
+            <Button onClick={onEditOpen} rightIcon={<EditOutlinedIcon />} borderRadius="full"colorScheme="teal" iconSpacing="0"/>
+            {/* <UpdateModal isOpen={isEditOpen} onClose={onEditClose} entryId={id}/>  */}
             <Button onClick={handleDelete} rightIcon={<DeleteForeverOutlinedIcon />} borderRadius="full" colorScheme="teal" iconSpacing="0"/>
         </HStack>
         </Box>

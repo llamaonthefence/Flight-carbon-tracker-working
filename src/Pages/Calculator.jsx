@@ -1,12 +1,15 @@
-
+import { Flex, Box, Text, Heading } from "@chakra-ui/react";
 
 const Calculator = () => {
-  return (
-    <div>
-      <h1>Carbon Calculator</h1>
-      <p>Calculate your carbon footprint here.</p>
-    </div>
-  );
+    return (
+        <Flex direction="column" align="top" justify="left" minHeight="100vh" p={4}>
+          <Heading mb={4}>Carbon Calculator</Heading>
+        <Box>
+        <Text>Calculate your carbon footprint here.</Text>
+    
+        </Box>
+        </Flex>
+      );
 };
 
 export default Calculator;
