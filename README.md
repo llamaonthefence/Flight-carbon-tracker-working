@@ -14,14 +14,14 @@ This is a form where users can select their origin and destination based on seve
 
 ***
 
-##Technologies Used
+## Technologies Used
 * Javascript
 * JSON 
 * React JS 
 
 ***
 
-##Process
+## Process
 #### UI Sketch (Figma)
 <img src="src/assets/for_readme/01-Process.png">
 
@@ -30,7 +30,7 @@ This is a form where users can select their origin and destination based on seve
 
 ***
 
-##Favourites
+## Favourites
 Trying Regex to manipulate data from API to pass into another API
 ```
 const iso2Code = selectedDepartureCountry.match(/\((.*?)\)/)[1];
@@ -81,7 +81,7 @@ Appreciate the power of useEffect
     }, [isOpen, entryId]);
 ```
 
-##Challenges Face 
+## Challenges Face 
 1. Project folder is large and increasingly confusing - how to structure project components
 2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
 
@@ -200,14 +200,14 @@ Makes or breaks the request
 ```
 ***
 
-##Next Steps
+## Next Steps
 1. Many steps
 2. Fix the problems newly created 
 3. Make CRUD functional
    
 ***
 
-##Attributions
+## Attributions
 * Waihon - for all the advice, hours spent on refreshing concepts and troubleshooting
 * [ChakraUI](https://v2.chakra-ui.com/getting-started) 
 * [MaterialUI](https://mui.com/)
