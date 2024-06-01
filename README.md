@@ -79,10 +79,14 @@ Appreciate the power of useEffect
         fetchData();
     }, [isOpen, entryId]);
 ```
+
 ***
+
 ## Challenges Face 
-    1. Project folder is large and increasingly confusing - how to structure project components
-    2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
+
+1. Project folder is large and increasingly confusing - how to structure project components
+2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
+    
 ```
         useEffect(() => {
     const fetchInitialData = async () => {
@@ -116,7 +120,9 @@ Appreciate the power of useEffect
         editAirtableEntry() 
         console.log('Updated form data', updatedFormData)
     }
-    ```
+
+```
+
 3. Using more than one APIs in consecutive manner
 
 ```
@@ -160,10 +166,14 @@ Appreciate the power of useEffect
     }, [selectedDestinationCountry]);
     ```
 ***
-## Things I learned 
+
+## Things I learned
+
 1. Plan project components down to detail AT THE START
 2. Reinforced destructuring assignment vs Object Literal assigment
+
 ```
+
 Look very similar but serve very different functions
 const {fields, createTime} = entry
 !=
