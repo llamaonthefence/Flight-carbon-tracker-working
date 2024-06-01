@@ -117,8 +117,10 @@ Appreciate the power of useEffect
         console.log('Updated form data', updatedFormData)
     }
     ```
-    3. Using more than one APIs in consecutive manner
-    ```
+3. Using more than one APIs in consecutive manner
+
+```
+
     // Fetch cities when departure country is selected
 
     useEffect(() => {
@@ -166,18 +168,26 @@ Look very similar but serve very different functions
 const {fields, createTime} = entry
 !=
 const entry = {field, createdTime}
+
 ```
+
 3. Naming consistency - carbonKg vs estimatedEmissions
+   
 ```
+
 const carbonKg = response.data.data.attributes.carbon_kg; // Error here 
 console.log("Carbon kg:", carbonKg);
 return carbonKg;
 const estimatedEmission = response.data.data.attributes.carbon_kg; // Error here 
 console.log("Carbon kg:", estimatedEmission);
 return estimatedEmission;
+
 ```
+
 4. A simple useEffect block can make a BIG difference to the app
+   
 ```
+
 Empty dependency array to control render once only on mounting. 
 Saves lots of API calls and make app more performant. 
 useEffect(() => {
@@ -187,22 +197,28 @@ useEffect(() => {
     }
     fetchEntries();
 }, []);
+
 ```
+
 5. How API requests are structured based on how data is structured
+   
 ```
+
 Makes or breaks the request
 --data '{
     "records": [
       {
         "fields": {...
 ```
+
 ***
-##Next Steps
+
+## Next Steps
 1. Many steps
 2. Fix the problems newly created 
 3. Make CRUD functional
 ***
-##Attributions
+## Attributions
 * Waihon - for all the advice, hours spent on refreshing concepts and troubleshooting
 * [ChakraUI](https://v2.chakra-ui.com/getting-started) 
 * [MaterialUI](https://mui.com/)
