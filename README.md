@@ -164,7 +164,9 @@ Appreciate the power of useEffect
             setDepartureCities([]); // Clear cities when no country is selected
         }
     }, [selectedDestinationCountry]);
-    ```
+
+```
+
 ***
 
 ## Things I learned
@@ -178,26 +180,22 @@ Look very similar but serve very different functions
 const {fields, createTime} = entry
 !=
 const entry = {field, createdTime}
-
 ```
 
 3. Naming consistency - carbonKg vs estimatedEmissions
-   
-```
 
+```
 const carbonKg = response.data.data.attributes.carbon_kg; // Error here 
 console.log("Carbon kg:", carbonKg);
 return carbonKg;
 const estimatedEmission = response.data.data.attributes.carbon_kg; // Error here 
 console.log("Carbon kg:", estimatedEmission);
 return estimatedEmission;
-
 ```
 
 4. A simple useEffect block can make a BIG difference to the app
    
 ```
-
 Empty dependency array to control render once only on mounting. 
 Saves lots of API calls and make app more performant. 
 useEffect(() => {
@@ -213,7 +211,6 @@ useEffect(() => {
 5. How API requests are structured based on how data is structured
    
 ```
-
 Makes or breaks the request
 --data '{
     "records": [
