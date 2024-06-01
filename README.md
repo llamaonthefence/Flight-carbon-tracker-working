@@ -21,7 +21,7 @@ This is a form where users can select their origin and destination based on seve
 * React JS 
 
 ***
-##Process
+## Process
 #### UI Sketch (Figma)
 <img src="src/assets/for_readme/01-Process.png">
 
