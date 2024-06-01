@@ -15,7 +15,7 @@ This is a form where users can select their origin and destination based on seve
 ![API Call (Search) & Add to Airtable](src/assets/for_readme/04-airline-api-search.png) 
 
 ***
-##Technologies Used
+## Technologies Used
 * Javascript
 * JSON 
 * React JS 
@@ -29,7 +29,7 @@ This is a form where users can select their origin and destination based on seve
 <img src="src/assets/for_readme/02-Process.png">
 
 ***
-####Favourites
+#### Favourites
 Trying Regex to manipulate data from API to pass into another API
 ```
 const iso2Code = selectedDepartureCountry.match(/\((.*?)\)/)[1];
