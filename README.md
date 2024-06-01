@@ -208,7 +208,7 @@ Makes or breaks the request
 ***
 
 ## Attributions
-* Waihon - for all the advice, hours spent on refreshing concepts and troubleshooting
+* Waihon - for all the tips, hours spent on revisiting concepts and troubleshooting
 * [ChakraUI](https://v2.chakra-ui.com/getting-started) 
 * [MaterialUI](https://mui.com/)
 * [OpenDataSoft API](https://public.opendatasoft.com/api/explore/v2.1/console)
