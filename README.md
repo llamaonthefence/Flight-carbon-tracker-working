@@ -78,12 +78,12 @@ Appreciate the power of useEffect
 
         fetchData();
     }, [isOpen, entryId]);
-    ```
-    ***
-    ##Challenges Face 
+```
+***
+## Challenges Face 
     1. Project folder is large and increasingly confusing - how to structure project components
     2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
-    ```
+```
         useEffect(() => {
     const fetchInitialData = async () => {
            try {
