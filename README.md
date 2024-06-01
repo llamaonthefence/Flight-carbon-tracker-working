@@ -13,15 +13,13 @@ This is a form where users can select their origin and destination based on seve
 ![Fetch input fields integrated from various APIs](src/assets/for_readme/03-Flight-form.png)
 
 ***
-
-## Technologies Used
+##Technologies Used
 * Javascript
 * JSON 
 * React JS 
 
 ***
-
-## Process
+##Process
 #### UI Sketch (Figma)
 <img src="src/assets/for_readme/01-Process.png">
 
@@ -29,8 +27,7 @@ This is a form where users can select their origin and destination based on seve
 <img src="src/assets/for_readme/02-Process.png">
 
 ***
-
-## Favourites
+####Favourites
 Trying Regex to manipulate data from API to pass into another API
 ```
 const iso2Code = selectedDepartureCountry.match(/\((.*?)\)/)[1];
@@ -79,13 +76,12 @@ Appreciate the power of useEffect
 
         fetchData();
     }, [isOpen, entryId]);
-```
-
-## Challenges Face 
-1. Project folder is large and increasingly confusing - how to structure project components
-2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
-
-```
+    ```
+    ***
+    ##Challenges Face 
+    1. Project folder is large and increasingly confusing - how to structure project components
+    2. CRUD - particularly Update - Unable to fetch all re-populate all fields in reusable form
+    ```
         useEffect(() => {
     const fetchInitialData = async () => {
            try {
@@ -118,9 +114,9 @@ Appreciate the power of useEffect
         editAirtableEntry() 
         console.log('Updated form data', updatedFormData)
     }
-```
-3. Using more than one APIs in consecutive manner
-```
+    ```
+    3. Using more than one APIs in consecutive manner
+    ```
     // Fetch cities when departure country is selected
 
     useEffect(() => {
@@ -158,7 +154,7 @@ Appreciate the power of useEffect
             setDepartureCities([]); // Clear cities when no country is selected
         }
     }, [selectedDestinationCountry]);
-```
+    ```
 ***
 ## Things I learned 
 1. Plan project components down to detail AT THE START
@@ -199,16 +195,13 @@ Makes or breaks the request
         "fields": {...
 ```
 ***
-
-## Next Steps
+##Next Steps
 1. Many steps
 2. Fix the problems newly created 
 3. Make CRUD functional
-   
 ***
-
-## Attributions
-* Waihon - for all the tips, hours spent on revisiting concepts and troubleshooting
+##Attributions
+* Waihon - for all the advice, hours spent on refreshing concepts and troubleshooting
 * [ChakraUI](https://v2.chakra-ui.com/getting-started) 
 * [MaterialUI](https://mui.com/)
 * [OpenDataSoft API](https://public.opendatasoft.com/api/explore/v2.1/console)

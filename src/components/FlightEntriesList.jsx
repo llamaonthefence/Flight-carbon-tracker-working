@@ -56,6 +56,8 @@ const FlightEntriesList = ({ flightEntries }) => {
         setEntries(flightEntries);
     }, [flightEntries]);
 
+//...........................................
+
       useEffect(() => {
         
     async function fetchEntries() {
@@ -68,7 +70,7 @@ const FlightEntriesList = ({ flightEntries }) => {
         
        
     console.log(entries)
-
+//...........................................
 
   return (
     <Box 

@@ -4,30 +4,6 @@
 const submitToAirtable = async (updatedFormData) => {
     const airtableApiUrl = `https://api.airtable.com/v0/appWrhXF96BNCMVTC/tblrQIv4hARjQJfm9`;
     
-    // base('Flight tracker').create([
-    // {
-    //     fields: {
-    //         "fldY7E38Rbx85oGLO": formData.entryTitle,
-    //         "fldkLuKgL5kxtf9Fz": formData.departureCountry,
-    //         "fldqSQtzrgJLM9liM": formData.departureCity,
-    //         "fldPEYicRQ8rF7Ydf": formData.departureAirport,
-    //         "fldaclWfBv2ybn7qz": formData.destinationCountry,
-    //         "fldVmKFu1iQAa0QaX": formData.destinationCity,
-    //         "fldfUsidfBpumDXHg": formData.destinationAirport,
-    //         "fldngfkjAutGwnCWq": formData.estimatedEmission
-    
-    //     }
-    // }
-
-    //   ], function(err, records) {
-    //     if (err) {
-    //       console.error(err);
-    //       return;
-    //     }
-    //     records.forEach(function (record) {
-    //       console.log(record.getId());
-    //     });
-    //   });
 
     const payload = {
         fields: {

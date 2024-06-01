@@ -27,37 +27,6 @@ function FlightEntry({ entry, onDelete }) {
 
     const {isOpen, onOpen, onClose} = useDisclosure() // for ViewModal
 
-    // const handleView = async () => {
-    //     try {
-    //         const entryData = await fetchAirtableEntry(id); 
-    //         console.log('View entry', entryData);
-    //         console.log(id) 
-    //     } catch (error) {
-    //         console.error('Error viewing entry', error)
-    //     }
-    // };
-
-    // const handleEdit = async () => {
-    //     try {
-    //         const updatedFormData = {
-    //             entryTitle: 'New Title', 
-    //             departureCountry,
-    //             departureCity,
-    //             departureAirport,
-    //             destinationCountry,
-    //             destinationCity,
-    //             destinationAirport,
-    //             estimatedEmission,
-    //         };
-
-    //         const updatedEntry = await editAirtableEntry(id, updatedFormData); 
-    //         console.log('Edited entry', updatedEntry);
-    //     } catch (error) {
-    //         console.error('Error editing entry', error)
-    //     }
-    // }; 
-
-
     // Edit/update
     const [isEditOpen, setIsEditOpen] = useState(false); 
     const onEditOpen = () => setIsEditOpen(true); 
@@ -116,9 +85,6 @@ function FlightEntry({ entry, onDelete }) {
       destinationAirport: PropTypes.string.isRequired,
     }).isRequired,
   };
-
-
-
 
   
   export default FlightEntry;

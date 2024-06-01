@@ -1,82 +1,16 @@
-// import { useState, useEffect } from "react";
-// import fetchAirlines from "../data/fetchAirlines";
-// import { Box, Input, Spinner, VStack, Text } from "@chakra-ui/react";
-
-// const FavouriteAirlinesList = () => {
-//     const [airlines, setAirlines] = useState([]); 
-//     const [searchTerm, setSearchTerm] = useState(""); 
-//     const [suggestions, setSuggestions] = useState([]); 
-//     const [loading, setLoading] = useState(false); 
-
-//     useEffect(() => {
-//         const fetchAirlineData = async () => {
-//             setLoading(true);
-//             try {
-//                 const airlines = await fetchAirlines(searchTerm); 
-//                 setAirlines(airlines); 
-//             } catch (error) {
-//                 console.error("Error fetching airline data:", error); 
-//             }
-//             setLoading(false); 
-//         };
-
-//         if (searchTerm) {
-//             fetchAirlineData()
-//         } else {
-//             setAirlines([]); 
-//         }
-//     }, [searchTerm]);
-
-//     const handleInputChange = async (value) => {   // should change to "name" key? 
-//         setSearchTerm(value);
-//         if (value.trim() !=="" ) {
-//             try{
-//                 const suggestions = await fetchAirlines(value);
-//                 setSuggestions(suggestions); 
-//             } catch (error) {
-//                 console.error("Error fetching airline suggestions:", error)
-//             }
-//         } else {
-//             setSuggestions([]);
-//         }
-//     }
-
-//     return (
-//         <Box>
-//             <Input 
-//             placeholder='Search'
-//             mb={4}
-//             value={searchTerm}
-//             onChange={(evt) => handleInputChange(evt.value.target)}/> 
-
-//         {loading? (<Spinner />) : (
-//             <Box>
-//                 <VStack>
-//                     {airlines.map((airline, index) => (
-//                         <Text key={index}>{airline.name}</Text>
-//                     ))}
-//                 </VStack>
-//             </Box> 
-//         )}
-
-
-
-//         </Box>
-//     )
-// }
-
-// export default FavouriteAirlinesList;
-
 import { useState, useEffect,useRef } from "react";
 import fetchAirlines from "../data/fetchAirlines";
-import { Box, Input, Spinner, VStack, Text } from "@chakra-ui/react";
+import { Box, Input, Spinner, HStack, Button } from "@chakra-ui/react";
 import './FavouriteAirlinesList.css'
+import { fetchAirtableAirlines } from "../data/fetchAirtableAirlines";
+import submitAirlineToAirtable from "../data/submitAirlineToAirtable";
 
 const FavouriteAirlinesList = () => {
     const [airlines, setAirlines] = useState([]); 
     const [searchTerm, setSearchTerm] = useState(""); 
     const [loading, setLoading] = useState(false);
     const [favouriteAirlines, setFavouriteAirlines] = useState([]) 
+    const [airlineEntries, setAirlineEntries] = useState([])
 
 // event handler for suggestion list: 
 
@@ -102,7 +36,17 @@ useEffect(() => {
 }, [showSuggestions]);
 
 //.....................................................................   
+//Prevent page re-render
 
+useEffect(() => {
+    async function fetchEntries() {
+        const data = await fetchAirtableAirlines();
+        airlineEntries(data);
+    }
+    fetchEntries();
+}, []);
+
+//.....................................................................  
 
     useEffect(() => {
         const fetchAirlineData = async () => {
@@ -127,14 +71,17 @@ useEffect(() => {
         setSearchTerm(evt.target.value);
     }
 
-    const addToFavourites = (airlineName) => {
-        setFavouriteAirlines([...favouriteAirlines, airlineName]); 
+    const addToFavourites = async (airline) => {
+        setFavouriteAirlines([...favouriteAirlines, airline]);
+        try {
+            const response = await submitAirlineToAirtable(airline);
+            console.log('Added to Airtable', response);
+        } catch (error) {
+            console.error ('Error adding to Airtable', error)
+        }
     }
 
 //.....................................................................   
-
-
-
 
     return (
         <Box ref={suggestionRef}>
@@ -155,6 +102,7 @@ useEffect(() => {
                         id="airlinesuggestions"
                         ref={suggestionRef}
                         >   
+                        
                             <p 
                             key={index}
                             onClick={()=>addToFavourites(airline.name)}
@@ -168,7 +116,15 @@ useEffect(() => {
         <Box mt={4}>
             <ul>
                 {favouriteAirlines.map((airline, index) => (
-                    <li key={index}>{airline}</li>
+                    <li 
+                    key={index}
+                    style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0" }}
+                    >{airline}
+                    <HStack>
+                    <Button size="sm" >Edit</Button>
+                    <Button size="sm" >Delete</Button>
+                    </HStack>
+                    </li>
                 ))}
             </ul>
         </Box>
@@ -177,3 +133,6 @@ useEffect(() => {
 }
 
 export default FavouriteAirlinesList;
+
+
+// https://stackoverflow.com/questions/74988738/react-with-chakra-doesnt-trigger-useeffect
